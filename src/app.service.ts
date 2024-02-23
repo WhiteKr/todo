@@ -15,7 +15,7 @@ export class AppService {
     return this.todoStorage.find((todo: Todo) => todo.id === getTodoDto.id);
   }
 
-  setTodo(addTodoDto: AddTodoDto): Todo {
+  addTodo(addTodoDto: AddTodoDto): Todo {
     const id: number = this.todoStorage.length;
     const newTodo: Todo = { ...addTodoDto, id };
 

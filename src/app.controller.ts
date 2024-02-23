@@ -9,12 +9,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('todo/:id')
-  getTodo(@Param() body: GetTodoDto): Todo {
-    return this.appService.getTodo(body);
+  getTodo(@Param() getTodoDto: GetTodoDto): Todo {
+    return this.appService.getTodo(getTodoDto);
   }
 
   @Post('addTodo')
-  addTodo(@Body() body: AddTodoDto): Todo {
-    return this.appService.setTodo(body);
+  addTodo(@Body() addTodoDto: AddTodoDto): Todo {
+    return this.appService.addTodo(addTodoDto);
   }
 }
