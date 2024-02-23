@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { Todo } from 'src/todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
 import { GetTodoDto } from './dto/getTodo.dto';
-import { Todo } from './todo.interface';
 
 @Injectable()
-export class AppService {
+export class TodoService {
   todoStorage: Todo[];
 
   constructor() {
