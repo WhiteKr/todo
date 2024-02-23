@@ -12,9 +12,7 @@ export class AppService {
   }
 
   getTodo(getTodoDto: GetTodoDto): Todo {
-    return this.todoStorage.find(
-      (todo: Todo) => todo.id.toString() === getTodoDto.id.toString(),
-    );
+    return this.todoStorage.find((todo: Todo) => todo.id === getTodoDto.id);
   }
 
   setTodo(addTodoDto: AddTodoDto): Todo {

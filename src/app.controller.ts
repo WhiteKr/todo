@@ -15,7 +15,6 @@ export class AppController {
 
   @Post('addTodo')
   addTodo(@Body() body: AddTodoDto): Todo {
-    console.log(body);
     return this.appService.setTodo(body);
   }
 }
