@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Todo } from 'src/todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
-import { GetTodoDto } from './dto/getTodo.dto';
 import { DeleteTodoDto } from './dto/deleteTodo.dto';
+import { GetTodoDto } from './dto/getTodo.dto';
 import { PutTodoBodyDto, PutTodoParamsDto } from './dto/putTodo.dto';
 
 @Injectable()
