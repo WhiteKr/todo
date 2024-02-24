@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { Todo } from '../todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
 import { GetTodoDto } from './dto/getTodo.dto';
 import { TodoService } from './todo.service';
+import { DeleteTodoDto } from './dto/deleteTodo.dto';
 
 @Controller('todo')
 export class TodoController {
@@ -25,5 +26,14 @@ export class TodoController {
   @Post()
   addTodo(@Body() addTodoDto: AddTodoDto): Todo {
     return this.appService.addTodo(addTodoDto);
+  }
+
+  @ApiOperation({
+    tags: ['todo'],
+    summary: 'Delete a TODO with {id}',
+  })
+  @Delete(':id')
+  deleteTodo(@Param() deleteTodoDto: DeleteTodoDto): Todo {
+    return this.appService.deleteTodo(deleteTodoDto);
   }
 }
