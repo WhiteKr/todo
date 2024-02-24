@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Todo } from 'src/todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
 import { DeleteTodoDto } from './dto/deleteTodo.dto';
@@ -28,7 +28,7 @@ export class TodoService {
     );
 
     if (!todo) {
-      throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
+      throw new NotFoundException();
     }
 
     return todo;
@@ -42,7 +42,7 @@ export class TodoService {
       (todo: Todo) => todo.id === updateTodoParamsDto.id,
     );
     if (index === -1) {
-      throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
+      throw new NotFoundException();
     }
 
     const newTodo: Todo = {
@@ -59,7 +59,7 @@ export class TodoService {
       (todo: Todo) => todo.id === deleteTodoDto.id,
     );
     if (index === -1) {
-      throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
+      throw new NotFoundException();
     }
 
     return this.todoStorage.splice(index, 1)[0];
