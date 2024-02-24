@@ -41,7 +41,7 @@ export class TodoController {
     @Param() updateTodoParamsDto: UpdateTodoParamsDto,
     @Body() updateTodoBodyDto: UpdateTodoBodyDto,
   ): Todo {
-    return this.appService.putTodo(updateTodoParamsDto, updateTodoBodyDto);
+    return this.appService.updateTodo(updateTodoParamsDto, updateTodoBodyDto);
   }
 
   @ApiOperation({ summary: 'Delete a TODO' })

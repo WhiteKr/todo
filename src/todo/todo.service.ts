@@ -34,20 +34,20 @@ export class TodoService {
     return todo;
   }
 
-  putTodo(
-    putTodoParamsDto: UpdateTodoParamsDto,
-    putTodoBodyDto: UpdateTodoBodyDto,
+  updateTodo(
+    updateTodoParamsDto: UpdateTodoParamsDto,
+    updateTodoBodyDto: UpdateTodoBodyDto,
   ): Todo {
     const index: number = this.todoStorage.findIndex(
-      (todo: Todo) => todo.id === putTodoParamsDto.id,
+      (todo: Todo) => todo.id === updateTodoParamsDto.id,
     );
     if (index === -1) {
       throw new NotFoundException();
     }
 
     const newTodo: Todo = {
-      ...putTodoParamsDto,
-      ...putTodoBodyDto,
+      ...updateTodoParamsDto,
+      ...updateTodoBodyDto,
     };
     this.todoStorage[index] = newTodo;
 
