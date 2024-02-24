@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class PutTodoParamsDto {
+export class UpdateTodoParamsDto {
   @ApiProperty()
   @IsNumber()
   id: number;
 }
 
-export class PutTodoBodyDto {
+export class UpdateTodoBodyDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
