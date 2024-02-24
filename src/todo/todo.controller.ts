@@ -12,7 +12,7 @@ import { Todo } from '../todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
 import { DeleteTodoDto } from './dto/deleteTodo.dto';
 import { GetTodoDto } from './dto/getTodo.dto';
-import { PutTodoBodyDto, PutTodoParamsDto } from './dto/putTodo.dto';
+import { UpdateTodoBodyDto, UpdateTodoParamsDto } from './dto/updateTodo.dto';
 import { TodoService } from './todo.service';
 
 @Controller('todo')
@@ -42,11 +42,11 @@ export class TodoController {
     summary: 'Put a TODO',
   })
   @Put(':id')
-  putTodo(
-    @Param() putTodoParamsDto: PutTodoParamsDto,
-    @Body() putTodoBodyDto: PutTodoBodyDto,
+  updateTodo(
+    @Param() updateTodoParamsDto: UpdateTodoParamsDto,
+    @Body() updateTodoBodyDto: UpdateTodoBodyDto,
   ): Todo {
-    return this.appService.putTodo(putTodoParamsDto, putTodoBodyDto);
+    return this.appService.updateTodo(updateTodoParamsDto, updateTodoBodyDto);
   }
 
   @ApiOperation({

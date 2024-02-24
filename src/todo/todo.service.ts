@@ -3,7 +3,7 @@ import { Todo } from 'src/todo.interface';
 import { AddTodoDto } from './dto/addTodo.dto';
 import { DeleteTodoDto } from './dto/deleteTodo.dto';
 import { GetTodoDto } from './dto/getTodo.dto';
-import { PutTodoBodyDto, PutTodoParamsDto } from './dto/putTodo.dto';
+import { UpdateTodoBodyDto, UpdateTodoParamsDto } from './dto/updateTodo.dto';
 
 @Injectable()
 export class TodoService {
@@ -34,20 +34,20 @@ export class TodoService {
     return todo;
   }
 
-  putTodo(
-    putTodoParamsDto: PutTodoParamsDto,
-    putTodoBodyDto: PutTodoBodyDto,
+  updateTodo(
+    updateTodoParamsDto: UpdateTodoParamsDto,
+    updateTodoBodyDto: UpdateTodoBodyDto,
   ): Todo {
     const index: number = this.todoStorage.findIndex(
-      (todo: Todo) => todo.id === putTodoParamsDto.id,
+      (todo: Todo) => todo.id === updateTodoParamsDto.id,
     );
     if (index === -1) {
       throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
     }
 
     const newTodo: Todo = {
-      ...putTodoParamsDto,
-      ...putTodoBodyDto,
+      ...updateTodoParamsDto,
+      ...updateTodoBodyDto,
     };
     this.todoStorage[index] = newTodo;
 
